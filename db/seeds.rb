@@ -7,6 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # ID3 tag music genres are surprisingly specific.
+require 'faker'
+
+20.times do
+  Artist.create(name: Faker::Music.band)
+end
 
 genres = Hash[[
   "Blues",
@@ -159,4 +164,10 @@ genres = Hash[[
   "Synthpop"
 ].map { |genre| [genre, Genre.find_or_create_by(name: genre)] }]
 
+300.times do
+  Song.create(title: Faker::Music::Phish.song, artist_id: rand(Artist.first.id..Artist.last.id), genre_id: rand(Genre.first.id..Genre.last.id))
+end
 
+2000.times do
+  Note.create(content: rand(1..5), song_id: rand(Song.first.id..Song.last.id))
+end

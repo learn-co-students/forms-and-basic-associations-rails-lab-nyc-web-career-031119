@@ -1,3 +1,11 @@
 <h1>Songs#show</h1>
 
-Title: <%= @song.title %>
+<p>Title: <%= @song.title %></p>
+<p>Genre: <%= @song.genre_name %></p>
+<label>Note: Count: </label><label><%= @song.notes.count %></label>
+<p>Notes:</p>
+<% @song.notes.each do |note|%>
+<p><%= note.content %></p>
+<% end %>
+
+<%= link_to "All Songs", songs_path %>
